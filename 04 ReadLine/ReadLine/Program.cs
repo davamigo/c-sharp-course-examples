@@ -6,3 +6,4 @@ string temp = Console.ReadLine();
 int age = Convert.ToInt32(temp);
 
 Console.WriteLine ("Tu nombre es: " + name + " y tu edad es: " + age);
+

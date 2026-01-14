@@ -29,7 +29,18 @@ int theInteger = 123456677; // Número de 4 bytes (32 bits)
 float theFloat = 0.45F; // Número real (baja precición). Ej: 0.45.
 double theDouble = -101.67; // Número real (alta precisión).
 
-string name = "Elsa";
+bool theBool = true; // Sólo true o false.
+
+// arrays - variables con múltiples valores
+int[] theArray = [1, 2, 3, 4];
+string[] theStringArray = [
+    "Loren",
+    "Ipsum"
+];
+
+// objects ---> lo veremos más adelante
+
+string name = "Elsa"; // Cadena de caracteres
 
 int age;
 age = 21;
@@ -45,25 +56,3 @@ Ejemplo: int thisIsCamelCase;
 age = age + 1; // esto es igual que: age++;
 
 Console.WriteLine("Tu edad ahora es " + age);
-
-/*
-Operadores => sirven para hacer operaciones matemáticas
-Tipos de operadores
-    +   sumar
-    -   restar
-    *   multiplicar
-    /   dividir
-    %   resto de la división
-    ++  incremento
-    --  decremento
-*/
-
-int sumResult = 10 + 5;
-int divisionResult = 11 / 3;
-int moduleResult = 11 % 3;
-double realDivisionResult = 11.0 / 3;
-
-Console.WriteLine("El resultado de la suma es " + sumResult);
-Console.WriteLine("El resultado de la división es " + divisionResult);
-Console.WriteLine("El resto de la división es " + moduleResult);
-Console.WriteLine("El resultado de la división real es " + realDivisionResult);

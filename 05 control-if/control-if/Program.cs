@@ -91,3 +91,29 @@ Operadores de condición:
     cond1 || cond2   - or  - una de las dos condiciones se tiene que cumplir (o las dos)
     !cond1           - not - negación: condición inversa.
 */
+
+//////////////////////////////////////////////////////////////////////////////////
+// Operador condicional
+
+string queEres;
+if (age < 18)
+{
+    queEres = "menor";
+}
+else
+{
+    queEres = "mayor";
+}
+
+Console.WriteLine("Eres " + queEres + " de edad.");
+
+/*
+Operador condicional:
+    variable = (condición) ? valor-si-se-cumple-la-condición : valor-si-no-se-cumple-la-condición;
+*/
+
+string queEres2 = (age < 18) ? "menor" : "mayor";
+Console.WriteLine("Eres " + queEres2 + " de edad.");
+
+string queEres3 = (age < 3) ? "bebé" : (age < 12) ? "niño" : (age < 18) ? "adolescente" : "adulto";
+Console.WriteLine("Eres un " + queEres3 + ".");

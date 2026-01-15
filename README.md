@@ -6,3 +6,4 @@ Projects:
 - 03 Operadores
 - 04 ReadLine
 - 05 Control-if
+- 06 Control-switch

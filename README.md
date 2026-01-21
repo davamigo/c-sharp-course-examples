@@ -7,3 +7,6 @@ Projects:
 - 04 ReadLine
 - 05 Control-if
 - 06 Control-switch
+- 07 Bucles-while
+- 08 Bucles-for
+

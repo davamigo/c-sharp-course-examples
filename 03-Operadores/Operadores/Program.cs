@@ -39,14 +39,14 @@ Console.WriteLine("El resultado es " + result); // -4
 Overflow
 */
 
-byte b = 255; // Unsigned
+byte b = 255;     // Unsigned: 0..255
 b++;
 
 // El resultado es 0 porque hace overflow
 Console.WriteLine("El byte con overflow es " + b);
 
 
-short s = 32767; // Signed -32768..0..32767
+short s = 32767;  // Signed -32768..0..32767
 s++;
 
 // El resultado es -32768 porque hace overflow

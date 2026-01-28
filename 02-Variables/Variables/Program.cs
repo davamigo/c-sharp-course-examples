@@ -56,3 +56,21 @@ Ejemplo: int thisIsCamelCase;
 age = age + 1; // esto es igual que: age++;
 
 Console.WriteLine("Tu edad ahora es " + age);
+
+/*
+Estilos de variables:
+
+    estoEsCamelCase
+
+    EstoEsPascalCase
+
+    esto_es_snake_case
+*/
+
+// Todos los tipos de datos
+
+byte b = 255;     // Unsigned:  0..255
+sbyte sb = -100;  // Signed:    -128..0..127
+
+short s = 32767;  // Signed -32768..0..32767
+ushort us = -111111;

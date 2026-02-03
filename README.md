@@ -10,5 +10,9 @@ Projects:
 - 07-Bucles-while
 - 08-Bucles-for
 - 09-Arrays
+- 10-Funciones
 
+
+Exercises:
+- Robots.
 

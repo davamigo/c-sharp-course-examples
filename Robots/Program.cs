@@ -1,4 +1,4 @@
-﻿const int maxRobots = 10;
+﻿const int maxRobots = 50;
 int totalRobots = 0;
 Robot[] robots = new Robot[maxRobots];
 
@@ -16,6 +16,7 @@ void DibujarMenu()
 
 void CrearRobot()
 {
+    Console.WriteLine("");
     if (totalRobots >= maxRobots)
     {
         Console.WriteLine("No caben más robots");
@@ -29,6 +30,7 @@ void CrearRobot()
             DibujarRobot(nuevoRobot);
         }
     }
+    Console.WriteLine("");
 }
 
 Robot NuevoRobotAleatorio()
@@ -39,13 +41,13 @@ Robot NuevoRobotAleatorio()
     switch (modelo)
     {
         case "R2D2":
-            nuevoRobot = new R2D2(nombre);
+            nuevoRobot = new R2D2(nombre, 0);
             break;
         case "C3PO":
-            nuevoRobot = new C3PO(nombre);
+            nuevoRobot = new C3PO(nombre, 1000);
             break;
         case "BB8":
-            nuevoRobot = new BB8(nombre);
+            nuevoRobot = new BB8(nombre, 100);
             break;
     }
     return nuevoRobot;
@@ -56,7 +58,6 @@ void DibujarRobot(Robot robot)
     Console.Write(": Modelo " + robot.ObtenerModelo());
     Console.Write(" - Nombre " + robot.ObtenerNombre());
     Console.WriteLine("");
-
 }
 
 string NombreAleatorio()
@@ -81,28 +82,76 @@ string ModeloAleatorio()
     return modelos[rand.Next(0, 2)];
 }
 
+int PedirPosicion()
+{
+    Console.Write("Que posición: ");
+    int posicion = Convert.ToInt32(Console.ReadLine());
+    if (posicion < 0 || posicion >= maxRobots)
+    {
+        Console.WriteLine("Posición " + posicion + " inválida");
+        return -1;
+    }
+    else if (robots[posicion] == null)
+    {
+        Console.WriteLine("Posición " + posicion + " vacía");
+        return -1;
+    }
+    else
+    {
+        return posicion;
+    }
+}
+
 void RestablecerRobot()
 {
-    // TODO
+    Console.WriteLine("");
+    int posicion = PedirPosicion();
+    if (posicion >= 0)
+    {
+        Robot robotRestablecido = NuevoRobotAleatorio();
+        robots[posicion] = robotRestablecido;
+        Console.Write("Robot restablecido");
+        DibujarRobot(robotRestablecido);
+    }
+    Console.WriteLine("");
 }
 
 void VerRobot()
 {
-    // TODO
+    Console.WriteLine("");
+    int posicion = PedirPosicion();
+    if (posicion >= 0)
+    {
+        Console.Write("Robot num. " + posicion);
+        DibujarRobot(robots[posicion]);
+    }
+    Console.WriteLine("");
 }
 
 void EliminarRobot()
 {
-    // TODO
+    Console.WriteLine("");
+    int posicion = PedirPosicion();
+    if (posicion >= 0)
+    {
+        robots[posicion] = null;
+        Console.WriteLine("Robot " + posicion + " borrado");
+    }
+    Console.WriteLine("");
 }
 
 void ListarRobots()
 {
+    Console.WriteLine("");
+    Console.WriteLine("Lista de robots:");
     for (int i = 0; i < totalRobots; i++)
     {
-        Console.Write("Robot num. " + (i + 1));
-        DibujarRobot(robots[i]);
+        if (robots[i] != null) {
+            Console.Write("Robot num. " + i);
+            DibujarRobot(robots[i]);
+        }
     }
+    Console.WriteLine("");
 }
 
 string opcion;

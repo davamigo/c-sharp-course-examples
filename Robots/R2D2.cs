@@ -1,7 +1,10 @@
 class R2D2: Robot
 {
-    public R2D2(string nombre): base(nombre, "R2D2")
+    private int energía;
+
+    public R2D2(string nombre, int energia): base(nombre, "R2D2")
     {
+        this.energía = energia;
     }
 
     public void ActivarRadar()
@@ -9,5 +12,10 @@ class R2D2: Robot
     }
     public void Rodar()
     {        
+    }
+
+    public int ObtenerEnergia()
+    {
+        return energía;
     }
 }

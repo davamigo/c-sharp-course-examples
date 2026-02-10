@@ -2,6 +2,36 @@
 int totalRobots = 0;
 Robot[] robots = new Robot[maxRobots];
 
+string opcion;
+do
+{
+    DibujarMenu();
+    opcion = Console.ReadLine();
+    switch (opcion)
+    {
+        case "1":
+            CrearRobot();
+            break;
+
+        case "2":
+            RestablecerRobot();
+            break;
+
+        case "3":
+            VerRobot();
+            break;
+
+        case "4":
+            EliminarRobot();
+            break;
+
+        case "5":
+            ListarRobots();
+            break;
+    }
+}
+while (opcion != "0");
+
 void DibujarMenu()
 {
     Console.WriteLine("---------------------");
@@ -152,34 +182,5 @@ void ListarRobots()
         }
     }
     Console.WriteLine("");
+    return;
 }
-
-string opcion;
-do
-{
-    DibujarMenu();
-    opcion = Console.ReadLine();
-    switch (opcion)
-    {
-        case "1":
-            CrearRobot();
-            break;
-
-        case "2":
-            RestablecerRobot();
-            break;
-
-        case "3":
-            VerRobot();
-            break;
-
-        case "4":
-            EliminarRobot();
-            break;
-
-        case "5":
-            ListarRobots();
-            break;
-    }
-}
-while (opcion != "0");

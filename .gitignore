@@ -129,3 +129,8 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
+
+# More detritus
+
+.idea/
+

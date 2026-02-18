@@ -18,6 +18,7 @@ void HolaMundo()
 HolaMundo();
 
 
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Ejemplo: Función Suma Dos Numeros
 
@@ -41,6 +42,7 @@ for (int i = 1; i <= 5; i++)
 }
 
 
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Ejemplo: Función WL como atajo para Console.WriteLine
 
@@ -50,6 +52,7 @@ void WL(string text)
 }
 
 WL("Hola mundo");
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -63,6 +66,7 @@ int SumaDosNumerosYDevuelveResultado(int num1, int num2)
 
 int result = SumaDosNumerosYDevuelveResultado(6, 7);
 WL("6 + 7 = " + result);
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -99,6 +103,7 @@ void bisabuelo()
 bisabuelo();
 
 
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Sobrecarga de funciones
 //
@@ -109,7 +114,121 @@ bisabuelo();
 // El compilador decide a que función llamar dependiendo de los parámetros que se pasen
 //
 
-Console.WriteLine(Functions.Suma(5, 7));
-Console.WriteLine(Functions.Suma(5.4, 7.8));
-Console.WriteLine(Functions.Suma("xxxx", "yyyy"));
+Console.WriteLine(Functions.Suma(5, 7));            // Llama a Suma(int, int)
+Console.WriteLine(Functions.Suma(5.4, 7.8));        // Llama a Suma(double, double)
+Console.WriteLine(Functions.Suma(5, 7.8));          // Llama a Suma(double, double)
+Console.WriteLine(Functions.Suma("xxxx", "yyyy"));  // Llama a Suma(string, string)
 
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Funciones anidadas
+//
+// Son funciones dentro de funciones
+//
+
+int Calculadora(int valor1, int valor2, int operacion)
+{
+    // Esta es la funcion más exterior
+
+    int Suma(int valor1, int valor2)
+    {
+        return valor1 + valor2;
+    }
+
+    int Resta(int valor1, int valor2)
+    {
+        return valor1 - valor2;
+    }
+
+    int Mult(int valor1, int valor2)
+    {
+        return valor1 * valor2;
+    }
+
+    switch (operacion)
+    {
+        case 1:
+            return Suma(valor1, valor2);
+        case 2:
+            return Resta(valor1, valor2);
+        case 3:
+            return Mult(valor1, valor2);
+        default:
+            return 0;
+    }
+}
+
+// Desde fuera de la función se puede llamar a Calculadora().
+// Pero no se puede llamar a Suma() o Resta() o Mult() porque no existen fuera de Calculadora().
+int num = Calculadora(10, 5, 1);
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Paso de parámetros por referencia
+//
+
+void Suma2 (int num)
+{
+    num = num + 2;
+}
+
+void Suma2Ref (ref int num)
+{
+    num = num + 2;
+}
+
+int x = 23;
+Suma2(x);
+Console.WriteLine("El resultado es: " + x);
+
+Suma2Ref(ref x);
+Console.WriteLine("El resultado es: " + x);
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Variables globales y locales
+//
+// Las variables globales existen en todo el contexto
+//
+// Las variables locales sólo existen dentro de un bloque {} (como una función)
+//
+
+// La variable g es una variable global
+int g = 37;
+
+if (g < 56)
+{
+    // La variable l es una variable local que sólo existe entro de las llaves {}
+    int l = g + 1;
+    Console.WriteLine(l);
+
+    // Justo aquí la variable l se detruye, pero g sigue existiendo
+}
+
+// No puedo llamar a l aquí porque ya no existe
+//Console.WriteLine(l);
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Parámetros opcionales
+//
+// Un parámetro opcional de una función es el valor por defecto que tensdrá cuando se llama a
+// la función sin parámetrod
+
+int Potencia (int num, int pot = 2)
+{
+    int resultado = num;
+    for (int i = 1; i < pot; i++)
+    {
+        resultado *= num;
+    }
+    return resultado;
+}
+
+Console.WriteLine("Pot 2^3=" + Potencia(2, 3));
+
+Console.WriteLine("Pot 4=" + Potencia(4));

@@ -12,6 +12,7 @@ Projects:
 - 09-Arrays
 - 10-Funciones
 - 11-Structs
+- 12-Clases
 
 Exercises:
 - Robots

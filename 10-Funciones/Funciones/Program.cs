@@ -229,6 +229,7 @@ int Potencia (int num, int pot = 2)
     return resultado;
 }
 
-Console.WriteLine("Pot 2^3=" + Potencia(2, 3));
+int resultado = Potencia(2, 3);
+Console.WriteLine("Pot 2^3=" + resultado);
 
 Console.WriteLine("Pot 4=" + Potencia(4));

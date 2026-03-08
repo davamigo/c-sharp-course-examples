@@ -13,6 +13,7 @@ Projects:
 - 10-Funciones
 - 11-Structs
 - 12-Clases
+- 13-Colecciones
 
 Exercises:
 - Robots

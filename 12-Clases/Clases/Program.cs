@@ -14,6 +14,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Partes de la clase:
 
+using System.ComponentModel;
+
 public class Coche
 {
     public string marca;
@@ -36,14 +38,42 @@ public class Program
 {
     public static void Main()
     {
+        /*
         ContadorDeObjetos obj1 = new ContadorDeObjetos();
         obj1.EscribirContador();
         ContadorDeObjetos obj2 = new ContadorDeObjetos();
         obj2.EscribirContador();
         ContadorDeObjetos obj3 = new ContadorDeObjetos();
         obj3.EscribirContador();
+        */
+
+        /*
+        Person p1 = new Person();
+        Person p2 = new ("Luke", "Skywalker", 20);
+        Person p3 = new Person (p2);
+        Person p4 = p3;
+        p4.FirstName = "Pepe";
+        */
+
+        /*
+        BankAccount account = new BankAccount("ING", 40000);
+        account.Deposit(1000);
+        Console.WriteLine(account.Balance);
+        */
+
+        Vehicle vehicle = new ("Mercedes", "Clase A", 2019);
+        vehicle.DisplayData();
+
+        Car car = new Car("Mercedes", "Clase A", 2019, 5);
+        car.DisplayData();
+
+        Van van = new Van("Citroen", "Berlingo", 1999, 1500);
+        van.DisplayData();
     }
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// static
 
 public class ContadorDeObjetos
 {
@@ -62,3 +92,114 @@ public class ContadorDeObjetos
     }
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Ejemplo de clase
+
+class Person {
+    public string? FirstName { get; set; }
+    public string? FamilyName { get; set; }
+    public int Age { get; set; }
+
+    public Person (string firstName, string familyName, int age)
+    {
+       FirstName = firstName;
+       FamilyName = familyName;
+       Age = age;
+    }
+    public Person()
+    {
+       FirstName = null;
+       FamilyName = null;
+       Age = 0;
+    }
+    public Person(Person other)
+    {
+      FirstName = other.FirstName;
+      FamilyName = other.FamilyName;
+      Age = other.Age;
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Ejemplo de clase
+
+public class BankAccount
+{
+    public string AccountNumber { get; private set; }
+    public decimal Balance { get; private set; }
+
+    public BankAccount(string accountNumber, decimal balance)
+    {
+        AccountNumber = accountNumber;
+        Balance = balance;
+    }
+
+    public void Withdraw (decimal amount)
+    {
+        if (Balance >= amount)
+        {
+            Balance -= amount;
+        }
+    }
+
+    public void Deposit (decimal amount)
+    {
+        Balance += amount;
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Herencia
+
+public class Vehicle
+{
+    public string Brand { get; set; }
+    public string Model { get; set; }
+    public int Year { get; set; }
+
+    public Vehicle (string brand, string model, int year)
+    {
+        Brand = brand;
+        Model = model;
+        Year = year;
+    }
+
+    public virtual void DisplayData()
+    {
+        Console.WriteLine("Marca: " + Brand + ", Modelo: " + Model + ", Año: " + Year);
+    }
+}
+
+public class Car: Vehicle
+{
+    public int Doors { get; set; }
+
+    public Car (string brand, string model, int year, int doors): base (brand, model, year)
+    {
+        Doors = doors;
+    }
+
+    public override void DisplayData()
+    {
+        Console.Write("Tipo: Coche, Puertas: " + Doors + ", ");
+        base.DisplayData();
+    }
+}
+
+public class Van: Vehicle
+{
+    public int MaxLoadKg { get; set; }
+
+    public Van (string brand, string model, int year, int maxLoadKg): base (brand, model, year) {
+        MaxLoadKg = maxLoadKg;
+    }
+
+    public override void DisplayData()
+    {
+        Console.Write("Tipo: Furgoneta, Carga Max.: " + MaxLoadKg + ", ");
+        base.DisplayData();
+    }
+}

@@ -1,76 +1,105 @@
 ﻿/*
-Números binarios en un byte
+VARIABLES
 
-00000000 = 0
-00000001 = 1
-00000010 = 2
-00000011 = 3
-00000100 = 4
-00000101 = 5
-00000110 = 6
-00000111 = 7
-00001000 = 8
-00001001 = 9
-00001010 = 10
-00001011 = 11
-...
-11111100 = 252
-11111101 = 253
-11111110 = 254
-11111111 = 255
+Una variable es una zona de memoria del ordenador que se utiliza para almacenar un dato.
+Una variable tiene nombre, un tipo de datos y un valor.
+Su contenido puede cambiar durante la ejecución del programa.
+
+Definición de una variable:
+    tipoDatos nombreVariable;
+
+Definición con inicialización:
+    tipoDatos nombreVariable = valorInicial;
+
+Asignación de valor (posterior a la inicialización):
+    nombreVariable = nuevoValor;
+
+
+Los nombre de variable suelen estar en inglés y ser camel case.
+
+Estilos de variables:
+    - thisIsCamelCase
+    - ThissPascalCase
+    - this_is_snake_case
+
+Ejemplo:
+    int thisIsCamelCase;
+
+
+Tipos de datos
+
+Un tipo de datos determina qué tipo de valor puede almacenar una variable.
+El tipo de datos define el formato del valor (número, texto, etc.) y las operaciones que se pueden realizar con él.
+
+Los ordenadores sólo entienden números binarios.
+Un bit es un dígito binario: o bien un 0 o bien un 1.
+
+Los ordenadores almacenan internamente la información en bytes.
+Un byte es un número de 8 bits.
+Por lo tanto un byte puede almacenar sólo 256 valores (2^8)
+Un tipo de datos numérico puede constar de varios bytes.
 */
 
-/* Tipos de datos */
+// Números enteros de 1 byte (8 bites)
+byte unsignedByte = 128; // 0..255
+sbyte signedByte = -60;  // -128..0..127
 
-byte theByte = 128; // Número de 0 a 255 (un byte está formado por 8 bits)
-short theShort = 567; // Número de 2 bytes (16 bits)
-int theInteger = 123456677; // Número de 4 bytes (32 bits)
+// Números enteros de 2 bytes (16 bits)
+short signedShort = -1011; // -32768..0..32767
+ushort unsignedShort = 567; // 0..65535
 
-float theFloat = 0.45F; // Número real (baja precición). Ej: 0.45.
-double theDouble = -101.67; // Número real (alta precisión).
+// Números enteros de 4 bytes (32 bits)
+int signedInteger = -700000;
+uint unsignedInteger = 123456677;
 
-bool theBool = true; // Sólo true o false.
+// Números enteros de 8 bytes (64 bits)
+long signedLong = -7000000000000000;
+ulong unsignedLong = 8000000000000000;
 
-// arrays - variables con múltiples valores
-int[] theArray = [1, 2, 3, 4];
-string[] theStringArray = [
+// Números reales
+float floatNum = 0.45F;         // Baja precisión
+double doubleNum = -101.67;     // Alta precisión
+decimal decimalNum = 987.654M;  // Mejor precisión
+
+// Booleanos: Sólo true o false
+bool boolValue = true; 
+
+// Texto: Caracter simple
+char symbol = 'F';
+
+// Texto: cadena de caracteres
+string text = "loren ipsum";
+
+// Arrays - variables con múltiples valores
+int[] numArray = [1, 2, 3, 4];
+string[] stringArray = [
     "Loren",
     "Ipsum"
 ];
 
 // objects ---> lo veremos más adelante
 
-string name = "Elsa"; // Cadena de caracteres
+/*
+Ejemplo:
+*/
 
+string name = "Elsa";
 int age;
 age = 21;
 
 Console.WriteLine("Te llamas " + name);
 Console.WriteLine("Tu edad es " + age);
 
-/*
-Los nombre de variable suelen estar en inglés y ser camel case
-Ejemplo: int thisIsCamelCase;
-*/
-
-age = age + 1; // esto es igual que: age++;
+age++; // esto es igual que: age = age + 1;
 
 Console.WriteLine("Tu edad ahora es " + age);
 
 /*
-Estilos de variables:
-
-    estoEsCamelCase
-
-    EstoEsPascalCase
-
-    esto_es_snake_case
+conversión de tipos
 */
 
-// Todos los tipos de datos
+double dbl = 1.23;
+int num = (int) dbl;
 
-byte b = 255;     // Unsigned:  0..255
-sbyte sb = -100;  // Signed:    -128..0..127
+Console.WriteLine("el valor " + dbl + " convertido a entero es: " + num);
 
-short s = 32767;  // Signed -32768..0..32767
-ushort us = -111111;

@@ -41,6 +41,8 @@ Un tipo de datos numérico puede constar de varios bytes.
 */
 
 // Números enteros de 1 byte (8 bites)
+using System.Reflection.Metadata.Ecma335;
+
 byte unsignedByte = 128; // 0..255
 sbyte signedByte = -60;  // -128..0..127
 
@@ -103,3 +105,23 @@ int num = (int) dbl;
 
 Console.WriteLine("el valor " + dbl + " convertido a entero es: " + num);
 
+/*
+Ámbito de variables
+*/
+
+// Esto es una variable global.
+int globalVar = 33;
+
+// Esto es un bloque de código.
+{
+    // Esto es una variable local.
+    int localVar = 81;
+
+	// Aquí se puede acceder a globalVar.
+   localVar += globalVar;
+
+    Console.WriteLine(localVar);
+}
+
+// Aquí ya no se puede acceder a localVar porque se ha destruido.
+Console.WriteLine(globalVar);

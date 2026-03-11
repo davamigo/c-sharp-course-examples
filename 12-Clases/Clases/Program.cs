@@ -61,7 +61,8 @@ public class Program
         Console.WriteLine(account.Balance);
         */
 
-        Vehicle vehicle = new ("Mercedes", "Clase A", 2019);
+        /*
+        Vehicle vehicle = new("Mercedes", "Clase A", 2019);
         vehicle.DisplayData();
 
         Car car = new Car("Mercedes", "Clase A", 2019, 5);
@@ -69,6 +70,11 @@ public class Program
 
         Van van = new Van("Citroen", "Berlingo", 1999, 1500);
         van.DisplayData();
+        */
+
+        BookList books = new BookList(100);
+        BookList.Book book1 = new BookList.Book("Miguel de Cervantes", "Don Quijote");
+        books.Add(book1);
     }
 }
 
@@ -96,28 +102,29 @@ public class ContadorDeObjetos
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Ejemplo de clase
 
-class Person {
+class Person
+{
     public string? FirstName { get; set; }
     public string? FamilyName { get; set; }
     public int Age { get; set; }
 
-    public Person (string firstName, string familyName, int age)
+    public Person(string firstName, string familyName, int age)
     {
-       FirstName = firstName;
-       FamilyName = familyName;
-       Age = age;
+        FirstName = firstName;
+        FamilyName = familyName;
+        Age = age;
     }
     public Person()
     {
-       FirstName = null;
-       FamilyName = null;
-       Age = 0;
+        FirstName = null;
+        FamilyName = null;
+        Age = 0;
     }
     public Person(Person other)
     {
-      FirstName = other.FirstName;
-      FamilyName = other.FamilyName;
-      Age = other.Age;
+        FirstName = other.FirstName;
+        FamilyName = other.FamilyName;
+        Age = other.Age;
     }
 }
 
@@ -136,7 +143,7 @@ public class BankAccount
         Balance = balance;
     }
 
-    public void Withdraw (decimal amount)
+    public void Withdraw(decimal amount)
     {
         if (Balance >= amount)
         {
@@ -144,7 +151,7 @@ public class BankAccount
         }
     }
 
-    public void Deposit (decimal amount)
+    public void Deposit(decimal amount)
     {
         Balance += amount;
     }
@@ -160,7 +167,7 @@ public class Vehicle
     public string Model { get; set; }
     public int Year { get; set; }
 
-    public Vehicle (string brand, string model, int year)
+    public Vehicle(string brand, string model, int year)
     {
         Brand = brand;
         Model = model;
@@ -173,11 +180,11 @@ public class Vehicle
     }
 }
 
-public class Car: Vehicle
+public class Car : Vehicle
 {
     public int Doors { get; set; }
 
-    public Car (string brand, string model, int year, int doors): base (brand, model, year)
+    public Car(string brand, string model, int year, int doors) : base(brand, model, year)
     {
         Doors = doors;
     }
@@ -189,11 +196,12 @@ public class Car: Vehicle
     }
 }
 
-public class Van: Vehicle
+public class Van : Vehicle
 {
     public int MaxLoadKg { get; set; }
 
-    public Van (string brand, string model, int year, int maxLoadKg): base (brand, model, year) {
+    public Van(string brand, string model, int year, int maxLoadKg) : base(brand, model, year)
+    {
         MaxLoadKg = maxLoadKg;
     }
 
@@ -201,5 +209,39 @@ public class Van: Vehicle
     {
         Console.Write("Tipo: Furgoneta, Carga Max.: " + MaxLoadKg + ", ");
         base.DisplayData();
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Clases dentro de clases
+
+class BookList
+{
+    public class Book
+    {
+        public string Author { get; set; }
+        public string Title { get; set; }
+        public Book(string author, string title)
+        {
+            Author = author;
+            Title = title;
+        }
+
+    }
+    private Book[] data;
+    private int size;
+    public BookList(int count)
+    {
+        data = new Book[count];
+        size = 0;
+    }
+    public void Add(Book book)
+    {
+        data[size++] = book;
+    }
+    public Book GetAt(int pos)
+    {
+        return data[pos];
     }
 }

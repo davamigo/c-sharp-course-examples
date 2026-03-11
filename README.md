@@ -14,6 +14,7 @@ Projects:
 - 11-Structs
 - 12-Clases
 - 13-Colecciones
+- 14-Excepciones
 
 Exercises:
 - Robots

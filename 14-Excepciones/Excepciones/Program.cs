@@ -26,6 +26,22 @@
         while (num != 0);   
     }
 
+    private static void EjemploTryFinally()
+    {
+        int num1 = 3;
+        int num2 = 0;
+        int res = 0;
+        try {
+            res = num1 / num2;
+        }
+        finally
+        {
+            // The error not captured
+            Console.WriteLine("Executing finally");
+        }
+        Console.WriteLine("The result is: " + res);
+    }
+
     private static void EjemploTryCatchMultiple()
     {
         try
@@ -109,6 +125,7 @@
     public static void Main()
     {
         //EjemploTryCatch();
+        //EjemploTryFinally();
         //EjemploTryCatchMultiple();
         //EjemploThrow();
         EjemploThrowCustomException();

@@ -16,6 +16,7 @@ Projects:
 - 13-Colecciones
 - 14-Excepciones
 - 15-Ficheros
+- 16-ApiRest
 
 Exercises:
 - Robots

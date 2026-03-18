@@ -11,13 +11,20 @@
 
     private static void ReadStream()
     {
-        StreamReader reader = new StreamReader(DATA_FILE);
-        while (!reader.EndOfStream)
+        try
         {
-            string? line = reader.ReadLine();
-            Console.WriteLine(line);
+            StreamReader reader = new StreamReader(DATA_FILE);
+            while (!reader.EndOfStream)
+            {
+                string? line = reader.ReadLine();
+                Console.WriteLine(line);
+            }
+            reader.Close(); 
         }
-        reader.Close();
+        catch (FileNotFoundException)
+        {
+            Console.WriteLine("Fichero {0} no encontrado", DATA_FILE);
+        }
     }
 
     private static void FileExists()
